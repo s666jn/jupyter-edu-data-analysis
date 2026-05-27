@@ -1,5 +1,6 @@
 ---
-name: jupyter-edu-data-analysis
+
+## name: jupyter-edu-data-analysis
 description: >-
   Guides course-style Jupyter data analysis reports (read/clean, EDA, group
   comparisons, optional correlation and hypothesis tests, synthesized
@@ -9,7 +10,6 @@ description: >-
   vs causation and confounding. Load only when the user @-mentions this skill
   by name (jupyter-edu-data-analysis).
 disable-model-invocation: true
----
 
 # 课程级 Jupyter 数据分析报告
 
@@ -46,7 +46,16 @@ disable-model-invocation: true
 
 - 设置 `plt.rcParams["axes.unicode_minus"] = False`。
 - `font.sans-serif`：优先 **Microsoft YaHei / SimHei / KaiTi** 等；可用 `matplotlib.font_manager` 在已注册字体中选首个命中。
-- Seaborn 主题在字体设置 **之后** 调用，避免被覆盖。
+- Seaborn 主题在字体设置 **之前** 调用，顺序不可换，否则中文显示出错。
+- 正确示例
+  ```python
+  #配置sns背景，再配置中文字体，顺序不可换，否则中文显示出错
+  sns.set_theme(style="whitegrid")
+
+  matplotlib.rcParams['font.family'] = 'sans-serif'
+  matplotlib.rcParams['font.sans-serif'] = ['SimHei', 'Microsoft YaHei', 'WenQuanYi Micro Hei']
+  matplotlib.rcParams['axes.unicode_minus'] = False
+  ```
 
 ## 统计表述边界（必须在结论中体现）
 
@@ -61,8 +70,8 @@ disable-model-invocation: true
 
 ## 交付检查
 
-- [ ] 稳健口径与全样本口径未混用误读  
-- [ ] 结论数字与 `display`/图一致  
-- [ ] 加分项（相关、检验）若缺依赖（如 scipy），`try/except` + `pip` 提示  
+- 稳健口径与全样本口径未混用误读  
+- 结论数字与 `display`/图一致  
+- 加分项（相关、检验）若缺依赖（如 scipy），`try/except` + `pip` 提示
 
 更多篇幅的技能说明拆到单独 reference，本文件保持简短。
