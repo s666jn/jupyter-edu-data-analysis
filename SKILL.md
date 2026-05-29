@@ -1,6 +1,7 @@
 ---
 
 ## name: jupyter-edu-data-analysis
+
 description: >-
   Guides course-style Jupyter data analysis reports (read/clean, EDA, group
   comparisons, optional correlation and hypothesis tests, synthesized
@@ -39,8 +40,9 @@ disable-model-invocation: true
 ## 图表原则
 
 - **优先**：分析到位；其次 **图少而典型**（分组柱、箱线、热力图、单行堆积结构条）。
-- 浮动标注（图例、注释框）避免挡柱条：**靠下或下角**，或与用户约定位置。
+- 总体追求美观。浮动标注（图例、注释框）避免挡柱条：**靠下或下角**，或与用户约定位置。
 - 需要保存矢量图时：`plt.savefig(..., bbox_inches="tight")`；路径与前几节一致。
+- 能用简洁代码，优先简洁，如用seaborn。
 
 ## Matplotlib 中文与缺字
 
